@@ -236,8 +236,8 @@ Según el TP Integrador, los productos a entregar son:
 
 ## 11. Pendientes y decisiones abiertas
 
-- [ ] Confirmar URL oficial de la página "Tramitación de Diploma de Pregrado y Grado" para referenciar en el informe
-- [ ] Completar las respuestas del dataset con información oficial verificada
+- [x] Confirmar URL oficial de la página "Tramitación de Diploma de Pregrado y Grado" para referenciar en el informe
+- [x] Completar las respuestas del dataset con información oficial verificada
 - [ ] Decidir si la interfaz será consola o Streamlit
 - [ ] Decidir si usar LaTeX o Word para el informe
 - [ ] Completar nombres del equipo en la sección 10
