@@ -222,7 +222,7 @@ Según el TP Integrador, los productos a entregar son:
 
 | Tarea | Responsable | Estado |
 |---|---|---|
-| Construcción del dataset | Acosta Lopez Gonzalo | Pendiente |
+| Construcción del dataset | Acosta Lopez Gonzalo | En proceso |
 | Preprocesamiento y pipeline | Acosta Lopez Gonzalo | Pendiente |
 | Experimento 1 (Naive Bayes) | — | Pendiente |
 | Experimento 2 (SVM + TF-IDF) | — | Pendiente |
