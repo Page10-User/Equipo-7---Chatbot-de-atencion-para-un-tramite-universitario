@@ -1,0 +1,268 @@
+{
+  "tramite": "titulo_intermedio_pregrado",
+  "version": "1.2",
+  "fuente": "Tramitación de Diploma de Pregrado y Grado — FACENA UNNE",
+  "descripcion": "Dataset de intenciones para el agente conversacional del trámite de Título Intermedio (Pregrado). Cada intención contiene una lista de variaciones de pregunta (mínimo 5, ideal 8) y una única respuesta basada en la documentación oficial verificada.",
+  "instrucciones": {
+    "preguntas": "Escribir entre 5 y 8 variaciones naturales de cómo un estudiante preguntaría esto. Variar vocabulario, longitud y estructura. Incluir formas coloquiales.",
+    "respuesta": "Redactar una respuesta clara, completa y basada en la documentación oficial. Usar lenguaje formal y tono institucional, como un experto que guía al estudiante."
+  },
+  "intents": [
+
+    {
+      "intent": "que_es_titulo_intermedio",
+      "paso": "general",
+      "descripcion_interna": "Preguntas sobre qué es el título intermedio, para qué sirve y quiénes pueden obtenerlo.",
+      "preguntas": [
+        "¿Qué es el título intermedio?",
+        "¿Para qué sirve el título intermedio?",
+        "¿El título intermedio tiene validez laboral?",
+        "¿Qué es el pregrado en FACENA?",
+        "¿El título intermedio es lo mismo que recibirse?",
+        "¿Cuándo puedo solicitar el título intermedio?",
+        "¿Qué diferencia hay entre el título intermedio y el de grado?",
+        "¿El título intermedio sirve para algo o es solo un papel?"
+      ],
+      "respuesta": "El Título Intermedio, también denominado de Pregrado, es una certificación académica oficial que se otorga al estudiante que ha completado una etapa intermedia de su plan de estudios, sin necesidad de haber finalizado la totalidad de la carrera de grado. Posee validez oficial y puede ser utilizado para acreditar estudios en el ámbito laboral, académico o para gestiones administrativas. En FACENA-UNNE, el trámite se realiza siguiendo el procedimiento establecido para la Solicitud de Certificación de Diploma Digital de Grado y Pregrado, aprobado por Resolución Nro. 1153/23 C.S."
+    },
+
+    {
+      "intent": "inicio_tramite",
+      "paso": "1",
+      "descripcion_interna": "Preguntas sobre cómo y por dónde arrancar el trámite. Primer paso a dar.",
+      "preguntas": [
+        "¿Por dónde empiezo el trámite del título intermedio?",
+        "¿Cuál es el primer paso para tramitar el título?",
+        "¿Cómo arranco el trámite del título intermedio?",
+        "¿Qué tengo que hacer primero para el título de pregrado?",
+        "¿Cómo inicio el proceso para el título intermedio?",
+        "¿Dónde empiezo a tramitar el título intermedio?",
+        "¿Qué es lo primero que hay que hacer para sacar el título intermedio?"
+      ],
+      "respuesta": "El trámite del Título Intermedio se divide en dos pasos. Para comenzar con el Paso 1, debe:\n\n1. Ingresar al SIU-Guaraní y actualizar sus datos personales, domicilio y datos de contacto desde el menú 'Mis datos personales'. Los datos deben coincidir exactamente con la documentación que va a presentar.\n\n2. Reunir la siguiente documentación: copia del DNI (ambas caras, en PDF), certificado de libre deuda de la Biblioteca de FACENA, certificado de libre deuda de la Biblioteca Central de la UNNE y foto carnet 4×4 con fondo blanco en formato JPG.\n\n3. Enviar toda la documentación a la Dirección de Gestión de Estudios al correo electrónico estudios.titulos@exa.unne.edu.ar.\n\nPuede consultarme sobre cada uno de estos requisitos para obtener más detalle."
+    },
+
+    {
+      "intent": "actualizar_siu",
+      "paso": "1",
+      "descripcion_interna": "Preguntas sobre cómo actualizar los datos personales en el SIU-Guaraní para que coincidan con la documentación.",
+      "preguntas": [
+        "¿Cómo actualizo mis datos en el SIU-Guaraní?",
+        "¿Dónde actualizo mis datos personales en el SIU?",
+        "¿Qué datos tengo que actualizar en el SIU para el trámite?",
+        "¿Por qué tengo que actualizar mis datos en el SIU?",
+        "¿Cómo modifico mi información en el SIU Guaraní?",
+        "¿Qué pasa si mis datos del SIU no coinciden con el DNI?",
+        "¿Dónde encuentro la opción para editar mis datos en el SIU?",
+        "¿Qué datos personales debo verificar en el SIU antes del trámite?"
+      ],
+      "respuesta": "Debe ingresar al SIU-Guaraní (https://guarani3.unne.edu.ar/g3w/) con su usuario y contraseña, y dirigirse al menú 'Mis datos personales'. Allí deberá actualizar sus datos personales, domicilio y datos de contacto (teléfonos y correo electrónico). Es fundamental que toda esta información coincida exactamente con la documentación que presentará, ya que estos datos serán utilizados para las notificaciones y cualquier discrepancia puede generar demoras o correcciones en el trámite."
+    },
+
+    {
+      "intent": "documentacion_requerida",
+      "paso": "1",
+      "descripcion_interna": "Preguntas sobre qué documentos hay que presentar en total para el trámite (vista general).",
+      "preguntas": [
+        "¿Qué documentos necesito para el trámite del título intermedio?",
+        "¿Qué tengo que presentar para el título intermedio?",
+        "¿Cuáles son los requisitos del trámite del título?",
+        "¿Qué documentación piden para el título intermedio?",
+        "¿Qué me piden para tramitar el título de pregrado?",
+        "¿Cuáles son los documentos necesarios para iniciar el trámite?",
+        "¿Qué archivos tengo que presentar para el trámite del título?"
+      ],
+      "respuesta": "Para el Paso 1 del trámite del Título Intermedio debe presentar la siguiente documentación:\n\n1. Copia del Documento Nacional de Identidad (DNI) en ambas caras, actualizado, en un único archivo PDF. Nombre del archivo: DNI-Apellido y Nombres.\n\n2. Certificado de libre deuda de la Biblioteca de FACENA. Se solicita vía correo electrónico a biblioteca@exa.unne.edu.ar. Nombre del archivo: LD-FaCENA – Apellido y Nombres.\n\n3. Certificado de libre deuda de la Biblioteca Central de la UNNE. Se solicita vía correo electrónico a ososa@bib.unne.edu.ar. Nombre del archivo: LD-UNNE-Apellido y Nombres.\n\n4. Foto carnet 4×4 con fondo blanco en formato JPG (no se acepta otro formato).\n\nToda esta documentación debe enviarse a la Dirección de Gestión de Estudios al correo estudios.titulos@exa.unne.edu.ar.\n\nSi es estudiante extranjero o del MERCOSUR, se requieren documentos adicionales que puede consultar por separado."
+    },
+
+    {
+      "intent": "formato_dni",
+      "paso": "1",
+      "descripcion_interna": "Preguntas sobre cómo debe ser la copia del DNI: ambas caras, formato PDF, actualizado.",
+      "preguntas": [
+        "¿Cómo tiene que ser la copia del DNI?",
+        "¿En qué formato mando el DNI?",
+        "¿Tengo que mandar las dos caras del DNI?",
+        "¿El DNI tiene que ser en PDF?",
+        "¿Sirve una foto del DNI o tiene que ser escaneado?",
+        "¿Qué requisitos tiene la copia del DNI para el trámite?",
+        "¿El DNI tiene que ser el actual o puede ser uno viejo?",
+        "¿Cómo se nombra el archivo del DNI?"
+      ],
+      "respuesta": "La copia del DNI debe incluir ambas caras: anverso (frente) y reverso (dorso), y corresponder al ejemplar más reciente. Puede verificar si su ejemplar está actualizado en https://tramites.renaper.gob.ar/mi_ejemplar/. Ambas caras deben integrarse en un único archivo en formato PDF. El archivo debe nombrarse como: DNI-Apellido y Nombres. Si es extranjero y no posee DNI, debe presentar el pasaporte correspondiente. Para ciudadanos del MERCOSUR, se requiere la cédula de identidad del MERCOSUR."
+    },
+
+    {
+      "intent": "libre_deuda_facena",
+      "paso": "1",
+      "descripcion_interna": "Preguntas sobre cómo obtener el certificado de libre deuda de la Biblioteca de FACENA.",
+      "preguntas": [
+        "¿Cómo saco el libre deuda de la biblioteca de FACENA?",
+        "¿Dónde pido el certificado de libre deuda de la biblioteca de FACENA?",
+        "¿Cómo obtengo el libre deuda de la biblioteca de FACENA?",
+        "¿El libre deuda de la biblioteca lo pido en persona o por correo?",
+        "¿Dónde tramito el libre deuda de FACENA?",
+        "¿Me piden el libre deuda de la biblioteca para el título?",
+        "¿Cómo se llama el archivo del libre deuda de FACENA?"
+      ],
+      "respuesta": "El certificado de libre deuda de la Biblioteca de FACENA se solicita por correo electrónico a la dirección biblioteca@exa.unne.edu.ar. No es necesario que se acerque personalmente. Una vez obtenido, el archivo debe nombrarse como: LD-FaCENA – Apellido y Nombres. Este certificado es obligatorio y debe incluirse en la documentación del Paso 1 que se envía a estudios.titulos@exa.unne.edu.ar."
+    },
+
+    {
+      "intent": "libre_deuda_central",
+      "paso": "1",
+      "descripcion_interna": "Preguntas sobre cómo obtener el certificado de libre deuda de la Biblioteca Central de la UNNE.",
+      "preguntas": [
+        "¿Cómo saco el libre deuda de la biblioteca central de la UNNE?",
+        "¿Dónde pido el libre deuda de la biblioteca central?",
+        "¿La biblioteca central de la UNNE es diferente a la de FACENA?",
+        "¿Cómo obtengo el certificado de libre deuda de la UNNE?",
+        "¿El libre deuda de la biblioteca central se pide por correo?",
+        "¿A qué dirección de correo pido el libre deuda de la UNNE?",
+        "¿Qué necesito para pedir el libre deuda de la biblioteca central?",
+        "¿Cómo se nombra el archivo del libre deuda de la UNNE?"
+      ],
+      "respuesta": "El certificado de libre deuda de la Biblioteca Central de la UNNE es un trámite distinto al de la Biblioteca de FACENA. Son dos instituciones diferentes y ambos certificados son obligatorios. Se solicita por correo electrónico a la dirección ososa@bib.unne.edu.ar. El archivo debe nombrarse como: LD-UNNE-Apellido y Nombres. Recuerde incluir este certificado junto con la demás documentación enviada a estudios.titulos@exa.unne.edu.ar."
+    },
+
+    {
+      "intent": "foto_carnet",
+      "paso": "1",
+      "descripcion_interna": "Preguntas sobre los requisitos de la foto del carnet: tamaño 4x4, fondo blanco, formato JPG exclusivo.",
+      "preguntas": [
+        "¿Cómo tiene que ser la foto del carnet?",
+        "¿Qué requisitos tiene la foto para el trámite?",
+        "¿La foto del carnet tiene que ser en color?",
+        "¿Dónde saco la foto del carnet?",
+        "¿Qué tamaño tiene que tener la foto?",
+        "¿Puedo usar cualquier foto o tiene que ser una específica?",
+        "¿La foto del carnet tiene que tener fondo blanco?",
+        "¿En qué formato tiene que estar la foto del carnet?"
+      ],
+      "respuesta": "La foto carnet debe cumplir con los siguientes requisitos exactos:\n\n- Tamaño: 4×4 centímetros.\n- Fondo: blanco.\n- Formato de archivo: JPG (no se aceptará otro formato).\n\nNo se requiere un tipo específico de fotografía; puede tomarla en cualquier estudio fotográfico. Asegúrese de que cumpla con estas especificaciones, ya que el sistema únicamente acepta archivos JPG con fondo blanco y tamaño 4×4."
+    },
+
+    {
+      "intent": "requisitos_extranjeros",
+      "paso": "1",
+      "descripcion_interna": "Preguntas sobre requisitos adicionales para estudiantes extranjeros o del MERCOSUR, y nota de género no binario.",
+      "preguntas": [
+        "¿Qué pasa si soy extranjero y quiero hacer el trámite del título?",
+        "¿Hay requisitos adicionales para estudiantes del MERCOSUR?",
+        "¿Qué documentación extra piden si soy extranjero?",
+        "¿Los requisitos son diferentes para estudiantes de otros países?",
+        "¿Qué necesito presentar de más si no soy argentino?",
+        "¿Cómo tramito el título si soy de otro país?",
+        "¿El trámite es igual para estudiantes extranjeros?",
+        "¿QuéDocumentación presento si soy del MERCOSUR?"
+      ],
+      "respuesta": "Los requisitos varían según su situación:\n\n- **Estudiantes extranjeros sin DNI:** deben presentar el pasaporte correspondiente en lugar del DNI.\n- **Ciudadanos del MERCOSUR:** deben presentar la cédula de identidad del MERCOSUR.\n- **Denominación de género no binario:** si corresponde, debe incluir una nota de adhesión respecto a la denominación de género no binario para el título.\n\nEn todos los casos, la documentación debe integrarse en un único archivo PDF con el nombre DNI-Apellido y Nombres, siguiendo el mismo procedimiento que el trámite estándar."
+    },
+
+    {
+      "intent": "continuidad_paso2",
+      "paso": "2",
+      "descripcion_interna": "Preguntas sobre cómo se avanza al Paso 2, qué correo llega, qué pasa si hay correcciones.",
+      "preguntas": [
+        "¿Cuándo paso al Paso 2 del trámite?",
+        "¿Cómo sé si mi Paso 1 fue aceptado?",
+        "¿Me avisan cuando termina el Paso 1?",
+        "¿Qué pasa después de entregar los documentos del Paso 1?",
+        "¿Qué correo me llega cuando aprueban el Paso 1?",
+        "¿Qué hago si me dicen que hay correcciones en el Paso 1?",
+        "¿Cuánto tarda en revisarse el Paso 1?"
+      ],
+      "respuesta": "Una vez completado el Paso 1, recibirá un correo electrónico desde la dirección estudios.titulos@exa.unne.edu.ar indicando cómo continuar con el trámite. Si la documentación presenta observaciones, el correo especificará las correcciones que debe realizar. Si la documentación es aceptada, el correo le indicará los pasos a seguir para avanzar al Paso 2. Se recomienda revisar periódicamente la casilla de correo (incluyendo la bandeja de spam) luego de completar el Paso 1."
+    },
+
+    {
+      "intent": "generar_solicitud_siu",
+      "paso": "2",
+      "descripcion_interna": "Preguntas sobre cómo generar la nueva solicitud en el SIU: pasos exactos, menú, opciones.",
+      "preguntas": [
+        "¿Cómo genero la solicitud en el SIU para el Paso 2?",
+        "¿Dónde creo la solicitud en el SIU-Guaraní?",
+        "¿Cómo hago la solicitud de constancia en el SIU?",
+        "¿Qué tengo que seleccionar en el SIU para el Paso 2?",
+        "¿Cuáles son los pasos exactos para la solicitud en el SIU?",
+        "¿Cómo hago para solicitar la constancia de validación académica?",
+        "¿Qué opción elijo en el SIU para el trámite del título?"
+      ],
+      "respuesta": "Una vez recibida la confirmación de que su documentación fue aceptada, debe ingresar al SIU-Guaraní y seguir estos pasos:\n\n1. Dirigirse a la operación Trámites / Solicitar Constancias y Certificaciones.\n2. Hacer clic en el botón 'Nueva solicitud'.\n3. Seleccionar la constancia denominada 'Solicitud de Validación de Historia Académica'.\n4. Guardar la solicitud.\n\nLa solicitud quedará en estado 'Pendiente'. Desde el listado de solicitudes podrá visualizar su estado actual."
+    },
+
+    {
+      "intent": "estado_solicitud",
+      "paso": "2",
+      "descripcion_interna": "Preguntas sobre cómo ver el estado de la solicitud, qué significa cada estado, cómo continuar.",
+      "preguntas": [
+        "¿Cómo veo el estado de mi solicitud en el SIU?",
+        "¿Qué significa que mi solicitud está en estado pendiente?",
+        "¿Dónde veo si mi solicitud fue aceptada?",
+        "¿Cómo sé en qué estado está mi trámite?",
+        "¿El estado pendiente es normal?",
+        "¿Qué hago cuando mi solicitud está en estado Entregada?",
+        "¿Dónde aparece la lista de solicitudes en el SIU?"
+      ],
+      "respuesta": "Puede consultar el estado de su solicitud ingresando al SIU-Guaraní, en la sección Trámites, donde encontrará el listado de todas sus solicitudes con su estado actual.\n\n- El estado 'Pendiente' es normal y significa que la solicitud de validación de historia académica fue registrada correctamente.\n- Cuando la solicitud aparezca en estado 'Entregada' y no esté vencida, podrá solicitar la certificación.\n- Además, recibirá un correo electrónico solicitando la presentación de la documentación necesaria para iniciar el proceso de certificación.\n\nPara iniciar la certificación, diríjase a la operación Trámites / Solicitar Certificación."
+    },
+
+    {
+      "intent": "pago_arancel",
+      "paso": "2",
+      "descripcion_interna": "Preguntas sobre cómo y dónde pagar el arancel del trámite: monto, sitio web, comprobante.",
+      "preguntas": [
+        "¿Cómo pago el arancel del trámite?",
+        "¿Dónde se paga el arancel del título intermedio?",
+        "¿Cuánto cuesta el trámite del título?",
+        "¿El trámite del título tiene costo?",
+        "¿Cómo hago el pago del arancel?",
+        "¿Se puede pagar el arancel online?",
+        "¿Qué monto tiene el arancel del título intermedio?",
+        "¿Cómo se nombra el comprobante de pago?"
+      ],
+      "respuesta": "El arancel correspondiente a la emisión del Diploma de Pregrado tiene un monto total de $30.000, establecido por Resolución RES – 2025 – 7936 – REC # UNNE. El pago se realiza a través del sitio pagos.unne.edu.ar, seleccionando la opción 'Arancel – Diploma Universitario de Grado y Pregrado'. Es importante presentar el comprobante en formato de factura. Una vez realizado el pago, deberá cargar el comprobante en el SIU-Guaraní al momento de la certificación, con el nombre de archivo: CPA-DNI-Apellido y Nombres (Factura)."
+    },
+
+    {
+      "intent": "descarga_constancia",
+      "paso": "2",
+      "descripcion_interna": "Preguntas sobre cómo descargar la constancia del título en trámite una vez disponible.",
+      "preguntas": [
+        "¿Cómo descargo la constancia del título en trámite?",
+        "¿Dónde bajo la constancia del título intermedio?",
+        "¿Cómo obtengo la constancia una vez que está lista?",
+        "¿Dónde aparece la constancia para descargar en el SIU?",
+        "¿La constancia se descarga desde el SIU?",
+        "¿Cómo sé que la constancia ya está disponible para descargar?",
+        "¿Qué opción elijo para descargar el certificado en el SIU?"
+      ],
+      "respuesta": "Una vez completado el proceso de certificación, en un plazo máximo de 48 horas hábiles estará disponible para su descarga la constancia de título en trámite. Para obtenerla:\n\n1. Ingrese al SIU-Guaraní.\n2. Diríjase a Trámites / Solicitar Constancias y Certificaciones.\n3. Seleccione 'Nueva solicitud'.\n4. Elija la opción 'Certificado de título en trámite'.\n5. Guarde la solicitud.\n\nEl documento estará disponible para su descarga una vez completado este procedimiento."
+    },
+
+    {
+      "intent": "tiempo_espera",
+      "paso": "2",
+      "descripcion_interna": "Preguntas sobre cuánto tarda el proceso, plazos estimados: 48 horas hábiles para la constancia.",
+      "preguntas": [
+        "¿Cuánto tarda el trámite del título intermedio?",
+        "¿En cuánto tiempo está lista la constancia?",
+        "¿Cuánto hay que esperar para descargar el certificado?",
+        "¿El trámite es rápido o tarda mucho?",
+        "¿Cuántos días tarda en procesarse el título intermedio?",
+        "¿Cuándo puedo descargar la constancia del título en trámite?",
+        "¿Hay que esperar mucho después de completar el Paso 2?"
+      ],
+      "respuesta": "Una vez completado el Paso 2 y finalizado el proceso de certificación, la constancia de título en trámite estará disponible para su descarga en un plazo máximo de 48 horas hábiles. Tenga en cuenta que los fines de semana y feriados no se contabilizan dentro de este plazo. El tiempo total del trámite completo (Paso 1 + Paso 2) puede variar en función de la documentación presentada y de si se requieren correcciones durante la revisión del Paso 1."
+    },
+
+    {
+      "intent": "fallback",
+      "paso": "ninguno",
+      "descripcion_interna": "Respuesta por defecto cuando el agente no reconoce la intención del usuario.",
+      "preguntas": [],
+      "respuesta": "Lo siento, no he podido entender su consulta. Puedo ayudarle con información sobre el trámite del Título Intermedio (Pregrado) de FACENA-UNNE: cómo iniciar el trámite, documentación requerida, uso del SIU-Guaraní, obtención de libres deuda, pago del arancel y descarga de la constancia de título en trámite. Por favor, intente reformular su pregunta o consulte directamente con la secretaría de la facultad."
+    }
+
+  ]
+}
