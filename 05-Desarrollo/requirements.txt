@@ -1,0 +1,20 @@
+# ============================================================
+# Dependencias — Agente Conversacional Título Intermedio
+# ============================================================
+# Frameworks core
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# NLP
+nltk>=3.8.0
+
+# Embeddings (Experimento 3)
+sentence-transformers>=3.0.0
+
+# Visualización
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Notebook interactivo
+jupyter>=1.0.0
