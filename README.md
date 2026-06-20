@@ -38,7 +38,7 @@ Chatbot basado en procesamiento de lenguaje natural (PLN) que guía al estudiant
 | **Vectorización**                    | ✅ **Implementada** — [`vectorizer.py`](05-Desarrollo/vectorizer.py) — TF-IDF (98 términos) + SentenceTransformer (512 dims) |
 | **Experimento 1 — Naive Bayes + TF-IDF** | ✅ **Completado** — Accuracy: 73.91% — F1 macro: 0.58                                           |
 | **Experimento 2 — SVM + TF-IDF**         | ✅ **Completado** — Accuracy: 82.61% — F1 macro: 0.67                                           |
-| **Experimento 3 — SVM + Embeddings**     | ✅ **Implementado** — Pendiente de ejecución (requiere ~1 GB RAM)                               |
+| **Experimento 3 — SVM + Embeddings**     | ✅ **Implementado** — Accuracy: 65.22% — F1 macro: 0.60                              |
 | Interfaz del chatbot                 | 🔲 Pendiente                                                                                                   |
 | Informe IEEE                         | 🔲 Pendiente                                                                                                   |
 | Infografía                           | 🔲 Pendiente                                                                                                   |
@@ -50,7 +50,7 @@ Chatbot basado en procesamiento de lenguaje natural (PLN) que guía al estudiant
 |-------------|--------|---------------|----------|------------|
 | Exp 1 | Naive Bayes | TF-IDF (500 terms) | 73.91% | 0.58 |
 | Exp 2 | SVM (RBF) | TF-IDF (500 terms) | **82.61%** | **0.67** |
-| Exp 3 | SVM (RBF) | SentenceTransformer (512d) | ⏳ Pendiente | ⏳ Pendiente |
+| Exp 3 | SVM (RBF) | SentenceTransformer (512d) | 65.22% | 0.6 |
 
 > SVM con TF-IDF duplica el F1-score del Naive Bayes, lo que indica que las fronteras de decisión lineales con márgenes anchos capturan mejor la separabilidad de las intenciones.
 
