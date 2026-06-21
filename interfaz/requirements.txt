@@ -1,0 +1,4 @@
+streamlit>=1.35
+# El resto de dependencias ya están en el entorno:
+#   scikit-learn, sentence-transformers, joblib, pandas, numpy
+# Se importan desde 05-Desarrollo/ (no directamente desde la interfaz)

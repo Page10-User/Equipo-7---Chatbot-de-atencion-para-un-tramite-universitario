@@ -1,8 +1,7 @@
 # PLANNING — Agente conversacional para la tramitación del Título Intermedio · FACENA UNNE
 
 > Documento de planificación interna del equipo.
-> **No es el README final** — ese se redactará al cierre del proyecto.
-> Actualizar este archivo a medida que avance el desarrollo.
+> **Nota:** Este documento refleja el estado final del proyecto.
 
 ---
 
@@ -17,8 +16,8 @@
 7. [Herramientas y tecnologías](#7-herramientas-y-tecnologías)
 8. [Experimentos planificados](#8-experimentos-planificados)
 9. [Entregables requeridos](#9-entregables-requeridos)
-10. [División de tareas (provisional)](#10-división-de-tareas-provisional)
-11. [Pendientes y decisiones abiertas](#11-pendientes-y-decisiones-abiertas)
+10. [División de tareas (final)](#10-división-de-tareas-final)
+11. [Decisiones y cambios durante el desarrollo](#11-decisiones-y-cambios-durante-el-desarrollo)
 
 ---
 
@@ -64,7 +63,7 @@ Trámite: Título Intermedio (Pregrado). Proceso completo: Paso 1 y Paso 2.
 
 ### Evolución natural (trabajos futuros)
 
-La arquitectura del agente se diseña desde el inicio para ser **extensible por trámite**. Agregar el Título de Grado o el Diploma Decorativo en una versión futura implica únicamente incorporar nuevas intenciones al dataset y reentrenar el modelo, sin modificar la estructura del sistema. Esta es la línea de trabajo futuro que se mencionará en el informe.
+La arquitectura del agente se diseña desde el inicio para ser **extensible por trámite**. Agregar el Título de Grado o el Diploma Decorativo en una versión futura implica únicamente incorporar nuevas intenciones al dataset y reentrenar el modelo, sin modificar la estructura del sistema. Esta es la línea de trabajo futuro que se menciona en el informe, incluyendo la expansión a otros trámites institucionales de la UNNE.
 
 ---
 
@@ -74,13 +73,12 @@ La arquitectura del agente se diseña desde el inicio para ser **extensible por 
 |---|---|
 | Modelo de IA para resolver un problema real | Clasificador de intenciones con PLN aplicado al trámite de título intermedio de FACENA-UNNE |
 | Problema abstraído de la realidad y delimitado en un contexto | Trámite de Título Intermedio (Pregrado), contexto: FACENA - UNNE |
-| Al menos tres experimentos | Ver sección 8 |
-| Tabla y métricas de resultados | Accuracy, Precision, Recall, F1-score por experimento |
-| Informe formato IEEE (máx. 4 páginas) | Secciones: Introducción, Método, Herramientas, Resultados, Conclusiones, Referencias |
-| Infografía | Resumen visual del proyecto con las mismas secciones del informe |
-| Código | Repositorio Git (este repo) |
-| Exposición en clase | Demostración en vivo del chatbot + presentación de resultados |
-| Conclusiones / trabajos futuros | Extensión a Título de Grado, Diploma Decorativo y otros trámites de la misma fuente |
+| Al menos tres experimentos | NB+TF-IDF, SVM+TF-IDF, SVM+Embeddings (ganador: 81.25%) |
+| Tabla y métricas de resultados | Accuracy, Precision, Recall, F1-score por experimento, CV F1 (K=5) |
+| Informe formato IEEE (máx. 4 páginas) | ✅ Completo — 06-Informe/informe_ieee.pdf (2 páginas) |
+| Infografía | ✅ Completa — 06-Informe/Infografía/ |
+| Código | Repositorio Git (este repo) — pipeline, modelos, interfaz Streamlit |
+| Conclusiones / trabajos futuros | Extensión a Título de Grado, Diploma Decorativo y otros trámites institucionales |
 
 ---
 
@@ -156,27 +154,39 @@ Medir accuracy, precisión, recall y F1 por cada variante del experimento.
 | Elemento | Detalle |
 |---|---|
 | Origen | Creados por el equipo basados en documentación oficial pública de FACENA-UNNE |
-| Formato | JSON o CSV con columnas: `intencion`, `paso`, `pregunta`, `respuesta` |
-| Cantidad estimada | 90 a 120 preguntas distribuidas en 15 intenciones (5-8 variaciones por intención) |
-| Herramienta de carga | Script Python propio o Google Sheets exportado a CSV |
+| Formato | JSON con columnas: `intencion`, `paso`, `pregunta`, `respuesta` |
+| Cantidad final | **240 preguntas** distribuidas en 15 intenciones (16 variaciones por intención) |
+| Versionado | v1.0 → v1.1 → v1.2 → v1.3 → **v1.4** (respuestas expandidas y actualizadas) |
 | Privacidad | Sin datos sensibles; todo el contenido es información pública de la facultad |
+
+### Historial de versiones del dataset
+
+| Versión | Cambios |
+|---------|---------|
+| v1.0 | Estructura inicial, 15 intents + fallback, 90 preguntas |
+| v1.1 | Expansión a 240 preguntas (16 por intent) |
+| v1.2 | Corrección de respuestas |
+| v1.3 | Refinamiento general |
+| v1.4 | Respuestas expandidas: `inicio_tramite` (Paso 2 completo), `libre_deuda_central` (formulario web + 7 campos), `libre_deuda_facena` (datos requeridos), `generar_solicitud_siu` (docs adicionales) |
+
+> **Importante:** Las respuestas se actualizan sin retreinar el modelo — el clasificador solo predice intenciones, las respuestas se buscan del JSON.
 
 ---
 
 ## 7. Herramientas y tecnologías
 
-> A confirmar según avance el desarrollo. Se irá completando.
-
-| Componente | Opción principal | Alternativa |
+| Componente | Opción utilizada | Alternativa |
 |---|---|---|
-| Lenguaje | Python 3.x | — |
-| Preprocesamiento NLP | NLTK / spaCy (español) | — |
-| Vectorización | TF-IDF (scikit-learn) | Sentence-Transformers |
-| Clasificador | SVM / Naive Bayes (scikit-learn) | Regresión logística |
-| Métricas | classification_report (scikit-learn) | — |
-| Interfaz | A definir | Consola Python / Streamlit |
-| Gestión del proyecto | Git + este repositorio | — |
-| Informe | A definir | LaTeX IEEE template / Word |
+| Lenguaje | Python 3.12 | — |
+| Preprocesamiento NLP | NLTK + cleaner propio | spaCy evaluado |
+| Vectorización | TF-IDF (scikit-learn) + SentenceTransformer (multilingual) | — |
+| Clasificador | MultinomialNB, SVC (scikit-learn) | Regresión logística (no usada) |
+| Optimización | GridSearchCV + 5-Fold Cross Validation | — |
+| Métricas | classification_report, f1_score, accuracy_score | — |
+| Interfaz | **Streamlit 1.57** (final) | Consola Python (descartada) |
+| Informe | **LaTeX + IEEEtran** (final) | Word (descartado) |
+| Infografía | HTML/CSS → PDF | Canva (alternativa) |
+| Gestión del proyecto | Git + GitHub | — |
 
 ---
 
@@ -188,20 +198,22 @@ El TP exige **al menos tres experimentos**. Los variamos sobre el mismo dataset 
 |---|---|---|
 | Exp. 1 | Algoritmo de clasificación | Naive Bayes multinomial con TF-IDF |
 | Exp. 2 | Algoritmo de clasificación | SVM lineal con TF-IDF |
-| Exp. 3 | Representación del texto | SVM con embeddings (sentence-transformers en español) |
+| Exp. 3 | Representación del texto | SVM con embeddings (SentenceTransformer en español) |
 
-**Métricas a reportar por experimento:**
-- Accuracy global
-- Precision, Recall y F1-score por intención
-- Matriz de confusión
+### Fases experimentales adicionales realizadas
 
-**Tabla de síntesis de resultados** (a completar durante el desarrollo):
+| Fase | Descripción | Herramienta |
+|---|---|---|
+| Fase 3 — Preprocesamiento | Stemming, ngram_range, max_features | Scripts en `pruebas/` |
+| Fase 4 — Optimización | GridSearchCV + K-Fold CV sobre hiperparámetros | GridSearchCV (scikit-learn) |
 
-| Experimento | Vectorización | Modelo | Hiperparámetros | Accuracy | F1 (macro) |
-|---|---|---|---|---|---|
-| Exp. 1 | TF-IDF (unigrams, 103 terms) | Naive Bayes | alpha=0.5 | 79.17% | 0.77 |
-| Exp. 2 | TF-IDF (unigrams, 103 terms) | SVM lineal | C=1.0 | 75.00% | 0.73 |
-| Exp. 3 | Embeddings (SentenceTransformer 512d) | SVM RBF | **C=10.0, gamma='scale'** | **81.25%** | **0.81** |
+### Tabla de resultados finales
+
+| Experimento | Vectorización | Modelo | Hiperparámetros | Accuracy | F1 (macro) | CV F1 (K=5) |
+|---|---|---|---|---|---|---|
+| Exp. 1 | TF-IDF (unigrams, 103 terms) | Naive Bayes | α=0.5 | 79.17% | 0.77 | 0.71 |
+| Exp. 2 | TF-IDF (unigrams, 103 terms) | SVM lineal | C=1.0 | 75.00% | 0.73 | 0.69 |
+| Exp. 3 | Embeddings (SentenceTransformer 512d) | **SVM RBF** | **C=10.0, γ=scale** | **81.25%** | **0.81** | **0.76** |
 
 ---
 
@@ -209,45 +221,57 @@ El TP exige **al menos tres experimentos**. Los variamos sobre el mismo dataset 
 
 Según el TP Integrador, los productos a entregar son:
 
-- [ ] **Código** — en este repositorio Git, organizado y comentado
-- [ ] **Informe** — máximo 4 páginas, formato IEEE, con las secciones indicadas en el TP
-- [ ] **Infografía** — resumen visual del proyecto (Introducción, Método, Herramientas, Resultados, Conclusiones)
-- [ ] **Exposición en clase** — demostración del sistema funcionando + defensa de resultados
+- [x] **Código** — en este repositorio Git, organizado y comentado
+- [x] **Informe** — máximo 4 páginas, formato IEEE (2 páginas final)
+- [x] **Infografía** — resumen visual del proyecto
 
 ---
 
-## 10. División de tareas (provisional)
-
-> Completar con los nombres reales del equipo.
+## 10. División de tareas (final)
 
 | Tarea | Responsable | Estado |
-|---|---|---|---|
-| Construcción del dataset | Acosta Lopez Gonzalo | ✅ Completado (v1.3, 240 preguntas) |
+|---|---|---|
+| Construcción del dataset | Acosta Lopez Gonzalo | ✅ Completado (v1.4, 240 preguntas) |
 | Preprocesamiento y pipeline | Acosta Lopez Gonzalo | ✅ Completado |
 | Experimento 1 (Naive Bayes) | Acosta Lopez Gonzalo | ✅ Completado (79.17%) |
 | Experimento 2 (SVM + TF-IDF) | Acosta Lopez Gonzalo | ✅ Completado (75.00%) |
 | Experimento 3 (Embeddings + SVM RBF) | Acosta Lopez Gonzalo | ✅ Completado (**81.25%** — ganador) |
 | Preprocesamiento avanzado (stemming, ngrams) | Acosta Lopez Gonzalo | ✅ Completado (documentado) |
-| GridSearchCV + K-Fold Cross Validation | Acosta Lopez Gonzalo | ✅ Completado (alpha=0.5, C=10.0) |
+| GridSearchCV + K-Fold Cross Validation | Acosta Lopez Gonzalo | ✅ Completado (α=0.5, C=10.0) |
 | Modelo final + script de inferencia | Acosta Lopez Gonzalo | ✅ Completado (`clasificar.py`) |
-| Interfaz del chatbot | — | 🔲 Pendiente |
-| Redacción del informe | — | 🔲 Pendiente |
-| Infografía | — | 🔲 Pendiente |
-| Preparación de la exposición | — | 🔲 Pendiente |
+| Interfaz web (Streamlit) | Acosta Lopez Gonzalo | ✅ Completada (tema oscuro, 3 modelos) |
+| Dataset v1.4 — respuestas expandidas | Acosta Lopez Gonzalo | ✅ Completado |
+| Redacción del informe IEEE | Acosta Lopez Gonzalo, Barrios Calathaki | ✅ Completo (LaTeX + PDF) |
+| Infografía | Acosta Lopez Gonzalo | ✅ Completa (HTML + PDF) |
+
 
 ---
 
-## 11. Pendientes y decisiones abiertas
+## 11. Decisiones y cambios durante el desarrollo
 
-- [x] Confirmar URL oficial de la página "Tramitación de Diploma de Pregrado y Grado" para referenciar en el informe
-- [x] Completar las respuestas del dataset con información oficial verificada
-- [x] Finalizar experimentos (Fase 3: preprocesamiento, Fase 4: GridSearchCV + K-Fold)
-- [x] Entrenar y guardar modelos finales
-- [x] Crear script de inferencia (`clasificar.py`)
-- [ ] Decidir si la interfaz será consola o Streamlit
-- [ ] Decidir si usar LaTeX o Word para el informe
-- [ ] Completar nombres del equipo en la sección 10
-- [ ] Interfaz del chatbot
-- [ ] Redacción del informe IEEE (máx 4 páginas)
-- [ ] Infografía
-- [ ] Exposición en clase
+### Decisiones técnicas
+
+| Decisión | Opción elegida | Alternativa descartada | Motivo |
+|---|---|---|---|
+| Interfaz | Streamlit (web) | Consola Python | Mejor experiencia de usuario, requerimiento del TP |
+| Formato informe | LaTeX (IEEEtran) | Word | Formato IEEE profesional, control fino |
+| Infografía | HTML/CSS → PDF | Canva | Auto-contenido, sin dependencias externas |
+| ngram_range | (1, 1) — unigrams | (1, 2) — bigramas | Menor dispersión con 240 muestras |
+| Stemming | No usar | Aplicar stemming | Destruye embeddings (−12.5%) |
+| Optimización | GridSearchCV + 5-Fold CV | Validación simple | Mejor estimación del rendimiento real |
+
+### Cambios durante el desarrollo
+
+- **Dataset expandido:** de 90 a 240 preguntas (16 por intención) para mejor generalización
+- **v1.4:** respuestas expandidas sin retreinar el modelo
+- **Embeddings:** se confirmó como la mejor representación, superando a TF-IDF por ~6 puntos
+- **Equipo:** se redujo a 2 integrantes activos (un miembro no pudo continuar, informado a la cátedra)
+- **Notebook sobrescrito en 3 ocasiones** — se resolvió usando File → Checkpoint manualmente
+
+### Próximos pasos
+
+- Posible v2.0 del dataset (50 preguntas por intención, ~750 total) — a cargo del usuario
+
+---
+
+*Última actualización: Junio 2026*

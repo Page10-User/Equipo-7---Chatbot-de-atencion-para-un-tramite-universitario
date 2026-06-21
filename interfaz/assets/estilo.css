@@ -1,0 +1,155 @@
+.stApp {
+    background-color: #0B0F19;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+section[data-testid="stSidebar"] {
+    background-color: #0D1117;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+section[data-testid="stSidebar"] .stSelectbox label {
+    color: #9CA3AF;
+    font-size: 1rem !important;
+}
+
+section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 1rem !important;
+}
+
+section[data-testid="stSidebar"] .stButton button {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem !important;
+    transition: all 0.2s ease;
+}
+
+section[data-testid="stSidebar"] .stButton button:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+div.stButton > button[kind="secondary"] {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    color: #D1D5DB;
+    font-size: 1.05rem !important;
+    padding: 0.85rem 1.2rem;
+    text-align: left;
+    transition: all 0.2s ease;
+    width: 100%;
+    height: auto;
+    min-height: 3.5rem;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+div.stButton > button[kind="secondary"]:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-color: rgba(96, 165, 250, 0.3);
+    color: #FFFFFF;
+}
+
+div.stButton > button[kind="secondary"]:active {
+    background-color: rgba(96, 165, 250, 0.1);
+}
+
+.stChatMessage {
+    background-color: transparent;
+    padding: 0.6rem 0;
+}
+
+div[data-testid="stChatMessageContent"] {
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
+}
+
+div[data-testid="stChatMessageContent"][data-testid*="user"] {
+    background-color: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+    padding: 0.85rem 1.2rem;
+    color: #FFFFFF;
+}
+
+div[data-testid="stChatMessageContent"]:has(+ div[data-testid*="assistant"]),
+.stChatMessage:nth-child(even) div[data-testid="stChatMessageContent"] {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 0.85rem 1.2rem;
+    color: #E5E7EB;
+}
+
+div[data-testid="stChatInput"] {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+div[data-testid="stChatInput"] input {
+    color: #FFFFFF;
+    font-size: 1.05rem !important;
+}
+
+div[data-testid="stChatInput"] input::placeholder {
+    color: #6B7280;
+    font-size: 1.05rem !important;
+}
+
+h1, h2, h3 {
+    color: #FFFFFF !important;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 1.8rem !important;
+}
+
+p, li, .stMarkdown {
+    color: #D1D5DB;
+    font-size: 1.05rem !important;
+    line-height: 1.7 !important;
+}
+
+a {
+    color: #60A5FA;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+div[data-testid="stSidebar"] .stSelectbox + div {
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 640px) {
+    .main > div {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+}
