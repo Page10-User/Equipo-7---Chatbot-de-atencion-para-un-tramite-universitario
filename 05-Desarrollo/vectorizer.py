@@ -21,7 +21,7 @@ PARAMS_TFIDF = {
     "max_features": 500,       # Limitar vocabulario a las 500 palabras más frecuentes
     "min_df": 2,               # Ignorar términos que aparecen en menos de 2 documentos
     "max_df": 0.85,            # Ignorar términos que aparecen en más del 85% de documentos
-    "ngram_range": (1, 2),     # Usar unigramas y bigramas (ej: "libre deuda")
+    "ngram_range": (1, 1),     # Solo unigramas (mejor rendimiento con datasets chicos segun pruebas)
     "sublinear_tf": True,      # Aplicar escala logarítmica a TF (1 + log(TF))
     "strip_accents": "unicode", # Normalizar acentos (doble seguridad)
     "lowercase": True,         # Minúsculas (doble seguridad)

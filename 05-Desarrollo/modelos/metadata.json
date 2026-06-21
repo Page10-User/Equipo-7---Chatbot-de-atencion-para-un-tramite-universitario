@@ -1,0 +1,49 @@
+{
+  "dataset": "v1.3",
+  "total_preguntas": 240,
+  "clases": [
+    "que_es_titulo_intermedio",
+    "inicio_tramite",
+    "actualizar_siu",
+    "documentacion_requerida",
+    "formato_dni",
+    "libre_deuda_facena",
+    "libre_deuda_central",
+    "foto_carnet",
+    "requisitos_extranjeros",
+    "continuidad_paso2",
+    "generar_solicitud_siu",
+    "estado_solicitud",
+    "pago_arancel",
+    "descarga_constancia",
+    "tiempo_espera"
+  ],
+  "modelos": {
+    "nb_tfidf": {
+      "archivo": "nb_tfidf.joblib",
+      "vectorizador": "vectorizador_tfidf.joblib",
+      "params": {
+        "alpha": 0.5
+      }
+    },
+    "svm_tfidf": {
+      "archivo": "svm_tfidf.joblib",
+      "vectorizador": "vectorizador_tfidf.joblib",
+      "params": {
+        "kernel": "linear",
+        "C": 1.0
+      }
+    },
+    "svm_embeddings": {
+      "archivo": "svm_embeddings.joblib",
+      "vectorizador": null,
+      "params": {
+        "kernel": "rbf",
+        "C": 10.0,
+        "gamma": "scale"
+      },
+      "embedding_model_name": "distiluse-base-multilingual-cased-v2",
+      "es_ganador": true
+    }
+  }
+}

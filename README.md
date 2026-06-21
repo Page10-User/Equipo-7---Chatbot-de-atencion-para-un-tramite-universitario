@@ -32,27 +32,41 @@ Chatbot basado en procesamiento de lenguaje natural (PLN) que guía al estudiant
 
 | Etapa                                | Estado                                                                                                         |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| **Dataset**                          | ✅ **v1.2 — Completado y verificado** (16 intenciones, 112 preguntas)                                           |
+| **Dataset**                          | ✅ **v1.3 — Completado y verificado** (15 intenciones + fallback, 240 preguntas)                                |
 | **Arquitectura de preprocesamiento** | ✅ **Documentada** — [`00-Arquitectura-preprocesamiento.md`](05-Desarrollo/00-Arquitectura-preprocesamiento.md) |
 | **Preprocesamiento (código)**        | ✅ **Implementado** — [`dataset.py`](05-Desarrollo/dataset.py) + [`cleaner.py`](05-Desarrollo/cleaner.py)      |
-| **Vectorización**                    | ✅ **Implementada** — [`vectorizer.py`](05-Desarrollo/vectorizer.py) — TF-IDF (98 términos) + SentenceTransformer (512 dims) |
-| **Experimento 1 — Naive Bayes + TF-IDF** | ✅ **Completado** — Accuracy: 73.91% — F1 macro: 0.58                                           |
-| **Experimento 2 — SVM + TF-IDF**         | ✅ **Completado** — Accuracy: 82.61% — F1 macro: 0.67                                           |
-| **Experimento 3 — SVM + Embeddings**     | ✅ **Implementado** — Accuracy: 65.22% — F1 macro: 0.60                              |
+| **Vectorización**                    | ✅ **Implementada** — [`vectorizer.py`](05-Desarrollo/vectorizer.py) — TF-IDF (103 términos, unigrams) + SentenceTransformer (512 dims) |
+| **Experimento 1 — Naive Bayes + TF-IDF** | ✅ **Completado** — Accuracy: **79.17%** — F1 macro: **0.77** (alpha=0.5, unigrams)               |
+| **Experimento 2 — SVM + TF-IDF**         | ✅ **Completado** — Accuracy: **75.00%** — F1 macro: **0.73** (C=1.0, unigrams)                    |
+| **Experimento 3 — SVM + Embeddings (RBF)** | ✅ **Completado** — Accuracy: **81.25%** — F1 macro: **0.81** (C=10.0, gamma='scale')           |
+| Preprocesamiento avanzado (stemming, ngrams, max_features) | ✅ **Completado** — Resultados documentados en documento de pruebas          |
+| Ajuste de hiperparámetros (GridSearchCV + K-Fold) | ✅ **Completado** — alpha=0.5, C=10.0, gamma='scale', CV F1: 0.76 (embeddings)    |
+| **Modelo final entrenado y guardado** | ✅ **Listo** — [`modelo_final.py`](05-Desarrollo/modelo_final.py) + modelos en [`modelos/`](05-Desarrollo/modelos/) |
+| **Script de inferencia**             | ✅ **Listo** — [`clasificar.py`](05-Desarrollo/clasificar.py) — `python clasificar.py "tu pregunta"` |
 | Interfaz del chatbot                 | 🔲 Pendiente                                                                                                   |
 | Informe IEEE                         | 🔲 Pendiente                                                                                                   |
 | Infografía                           | 🔲 Pendiente                                                                                                   |
 | Exposición                           | 🔲 Pendiente                                                                                                   |
 
-## 📈 Resultados preliminares
+## 📈 Resultados finales
 
-| Experimento | Modelo | Vectorización | Accuracy | F1 (macro) |
-|-------------|--------|---------------|----------|------------|
-| Exp 1 | Naive Bayes | TF-IDF (500 terms) | 73.91% | 0.58 |
-| Exp 2 | SVM (RBF) | TF-IDF (500 terms) | **82.61%** | **0.67** |
-| Exp 3 | SVM (RBF) | SentenceTransformer (512d) | 65.22% | 0.6 |
+| Experimento | Modelo | Vectorización | Hiperparámetros | Accuracy | F1 (macro) | CV F1 (K=5) |
+|-------------|--------|---------------|-----------------|----------|------------|-------------|
+| Exp 1 | Naive Bayes | TF-IDF (103 terms, unigrams) | alpha=0.5 | **79.17%** | 0.77 | 0.71 |
+| Exp 2 | SVM (linear) | TF-IDF (103 terms, unigrams) | C=1.0 | 75.00% | 0.73 | 0.69 |
+| Exp 3 | **SVM (RBF)** | **SentenceTransformer (512d)** | **C=10.0, gamma='scale'** | **81.25%** | **0.81** | **0.76** |
 
-> SVM con TF-IDF duplica el F1-score del Naive Bayes, lo que indica que las fronteras de decisión lineales con márgenes anchos capturan mejor la separabilidad de las intenciones.
+> **Ganador: SVM RBF + Embeddings (C=10.0).** Los embeddings capturan similitud semántica que TF-IDF no puede ver, y el kernel RBF + C elevado aprovecha la estructura no lineal del espacio de embeddings de alta calidad.
+
+### Pruebas de preprocesamiento (Fase 3)
+
+| Prueba | Mejor configuración | Impacto |
+|--------|-------------------|---------|
+| Stemming | **No usar** | Beneficia NB (+2%) pero destruye embeddings (−12.5%) |
+| ngram_range | **(1, 1)** — unigrams | Supera a (1,2) en NB (+4.17%) y SVM (+2.08%) |
+| max_features | **500** (min_df=2 limita a 103-163 términos) | Sin cambio real, el límite lo pone min_df |
+
+> Documentación completa: [`Resultados-pruebas-preprocesamiento.md`](05-Desarrollo/pruebas/Resultados-pruebas-preprocesamiento.md) (9 secciones con teoría y resultados).
 
 ## 🔗 Enlaces útiles
 

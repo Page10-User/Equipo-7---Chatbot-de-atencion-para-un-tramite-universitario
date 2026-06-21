@@ -197,11 +197,11 @@ El TP exige **al menos tres experimentos**. Los variamos sobre el mismo dataset 
 
 **Tabla de síntesis de resultados** (a completar durante el desarrollo):
 
-| Experimento | Vectorización | Modelo | Accuracy | F1 (macro) |
-|---|---|---|---|---|
-| Exp. 1 | TF-IDF | Naive Bayes | — | — |
-| Exp. 2 | TF-IDF | SVM lineal | — | — |
-| Exp. 3 | Embeddings | SVM lineal | — | — |
+| Experimento | Vectorización | Modelo | Hiperparámetros | Accuracy | F1 (macro) |
+|---|---|---|---|---|---|
+| Exp. 1 | TF-IDF (unigrams, 103 terms) | Naive Bayes | alpha=0.5 | 79.17% | 0.77 |
+| Exp. 2 | TF-IDF (unigrams, 103 terms) | SVM lineal | C=1.0 | 75.00% | 0.73 |
+| Exp. 3 | Embeddings (SentenceTransformer 512d) | SVM RBF | **C=10.0, gamma='scale'** | **81.25%** | **0.81** |
 
 ---
 
@@ -221,16 +221,19 @@ Según el TP Integrador, los productos a entregar son:
 > Completar con los nombres reales del equipo.
 
 | Tarea | Responsable | Estado |
-|---|---|---|
-| Construcción del dataset | Acosta Lopez Gonzalo | En proceso |
-| Preprocesamiento y pipeline | Acosta Lopez Gonzalo | Pendiente |
-| Experimento 1 (Naive Bayes) | — | Pendiente |
-| Experimento 2 (SVM + TF-IDF) | — | Pendiente |
-| Experimento 3 (Embeddings) | — | Pendiente |
-| Interfaz del chatbot | — | Pendiente |
-| Redacción del informe | — | Pendiente |
-| Infografía | — | Pendiente |
-| Preparación de la exposición | — | Pendiente |
+|---|---|---|---|
+| Construcción del dataset | Acosta Lopez Gonzalo | ✅ Completado (v1.3, 240 preguntas) |
+| Preprocesamiento y pipeline | Acosta Lopez Gonzalo | ✅ Completado |
+| Experimento 1 (Naive Bayes) | Acosta Lopez Gonzalo | ✅ Completado (79.17%) |
+| Experimento 2 (SVM + TF-IDF) | Acosta Lopez Gonzalo | ✅ Completado (75.00%) |
+| Experimento 3 (Embeddings + SVM RBF) | Acosta Lopez Gonzalo | ✅ Completado (**81.25%** — ganador) |
+| Preprocesamiento avanzado (stemming, ngrams) | Acosta Lopez Gonzalo | ✅ Completado (documentado) |
+| GridSearchCV + K-Fold Cross Validation | Acosta Lopez Gonzalo | ✅ Completado (alpha=0.5, C=10.0) |
+| Modelo final + script de inferencia | Acosta Lopez Gonzalo | ✅ Completado (`clasificar.py`) |
+| Interfaz del chatbot | — | 🔲 Pendiente |
+| Redacción del informe | — | 🔲 Pendiente |
+| Infografía | — | 🔲 Pendiente |
+| Preparación de la exposición | — | 🔲 Pendiente |
 
 ---
 
@@ -238,7 +241,13 @@ Según el TP Integrador, los productos a entregar son:
 
 - [x] Confirmar URL oficial de la página "Tramitación de Diploma de Pregrado y Grado" para referenciar en el informe
 - [x] Completar las respuestas del dataset con información oficial verificada
+- [x] Finalizar experimentos (Fase 3: preprocesamiento, Fase 4: GridSearchCV + K-Fold)
+- [x] Entrenar y guardar modelos finales
+- [x] Crear script de inferencia (`clasificar.py`)
 - [ ] Decidir si la interfaz será consola o Streamlit
 - [ ] Decidir si usar LaTeX o Word para el informe
 - [ ] Completar nombres del equipo en la sección 10
-- [ ] Revisar si el Experimento 3 está al alcance del equipo (requiere descargar un modelo de embeddings en español)
+- [ ] Interfaz del chatbot
+- [ ] Redacción del informe IEEE (máx 4 páginas)
+- [ ] Infografía
+- [ ] Exposición en clase
