@@ -212,6 +212,30 @@ El modelo SVM con embeddings (M3) obtuvo el mejor desempe\~no. En una
 prueba cualitativa con 7 preguntas no incluidas en el dataset, clasific\'o 
 6 de 7 correctamente (85.71\%).
 
+La Figura~\ref{fig:comparison} muestra la comparaci\'on de exactitud 
+entre los tres modelos, y la Figura~\ref{fig:confusion} presenta las 
+matrices de confusi\'on correspondientes.
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=0.72\textwidth]{img/comparison_accuracy.png}
+\caption{Comparaci\'on de exactitud entre los tres modelos.}
+\label{fig:comparison}
+\end{figure*}
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=0.30\textwidth]{img/confusion_nb.png}
+\hfill
+\includegraphics[width=0.30\textwidth]{img/confusion_svm_linear.png}
+\hfill
+\includegraphics[width=0.30\textwidth]{img/confusion_emb.png}
+\caption{Matrices de confusi\'on. Izquierda: NB+TF-IDF ($\alpha=0.5$). 
+Centro: SVM Lineal+TF-IDF ($C=1.0$). Derecha: SVM RBF+Embeddings 
+($C=10.0$, $\gamma$=scale).}
+\label{fig:confusion}
+\end{figure*}
+
 \section{Conclusiones}
 
 \subsection{Hallazgos}
