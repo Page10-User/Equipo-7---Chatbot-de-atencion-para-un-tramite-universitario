@@ -96,7 +96,7 @@ Una aplicación web interactiva para probar el clasificador en tiempo real:
 ```bash
 streamlit run interfaz/app.py
 ```
-> Asegurarse de tener instalado 'nltk', 'sentence-transformers' y 'streamlit', si no ejecutar python -m pip install [nombre], emplazando nombre y los corchetes por la dependencia faltante.
+> Asegurarse de tener instalado 'nltk', 'sentence-transformers' y 'streamlit', si no, ejecutar python -m pip install [nombre], remplazando nombre y los corchetes por la dependencia faltante.
 
 > Primera carga ~5 segundos (cacheo de SentenceTransformer). Posteriormente es instantáneo.
 
